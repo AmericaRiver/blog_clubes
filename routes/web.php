@@ -38,7 +38,7 @@ $router->group(['middleware'=>['cors']], function() use($router){
         $router->get('/clubes', 'ClubController@index');
         $router->get('/clubes/{id}', 'ClubController@get');
         $router->post('/clubes', 'ClubController@create');
-        $router->put('/clubes/{id}', 'ClubController@update');
+        $router->post('/clubes/{id}', 'ClubController@update');
         $router->delete('/clubes/{id}', 'ClubController@destroy');
 
         $router->get('/clubes-alumnos', 'ClubalumnoController@index');
