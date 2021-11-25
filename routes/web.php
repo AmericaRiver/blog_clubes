@@ -32,7 +32,7 @@ $router->group(['middleware'=>['cors']], function() use($router){
         $router->get('/instructores', 'InstructorController@index');
         $router->get('/instructores/{id}', 'InstructorController@get');
         $router->post('/instructores', 'InstructorController@create');
-        $router->put('/instructores/{id}', 'InstructorController@update');
+        $router->post('/instructores/{id}', 'InstructorController@update');
         $router->delete('/instructores/{id}', 'InstructorController@destroy');
 
         $router->get('/clubes', 'ClubController@index');

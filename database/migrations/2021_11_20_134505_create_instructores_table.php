@@ -24,6 +24,7 @@ class CreateInstructoresTable extends Migration
             $table->string('correo', 60);
             $table->char('usuario', 5);
             $table->string('password');
+            $table->string('video', 2500);
             //$table->timestamps();
         });
     }

@@ -16,7 +16,7 @@ class Instructor extends Model implements AuthenticatableContract, AuthorizableC
     protected $fillable = [
        'id', 'rol', 'nombre', 'apellido_paterno',
         'apellido_materno', 'edad',
-        'telefono', 'correo', 'usuario'
+        'telefono', 'correo', 'usuario', 'video'
     ];
 
     /**
