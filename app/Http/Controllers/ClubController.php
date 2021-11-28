@@ -4,23 +4,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Club;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 
 class ClubController extends Controller{
     public function index(){
         return Club::all();
-    }
-    
-    public function union(){
-        $result = DB::table('clubes')
-        ->join('instructores', 'clubes.id_instructor', '=', 'instructores.id')
-        ->select('clubes.id', 'clubes.nombre', 'clubes.imagen', 'instructores.nombre')
-        ->get();
-
-        if($result)
-            return $result;
-        else
-            return response()->json(['status'=>'failed'], 404);
     }
 
     public function get($id){

@@ -5,12 +5,24 @@ use Illuminate\Http\Request;
 use App\Models\Instructor;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class InstructorController extends Controller{
 
     public function index(Request $req){
          if($req->user()->rol != 'A') return response()->json(['status'=>'failed no eres administrador'], 401);
          return Instructor::all();
+     }
+
+     public function union(){
+        $result=DB::table('instructores')
+        ->join('clubes', 'instructores.id', '=', 'clubes.id_instructor')
+        ->select('clubes.id', 'clubes.nombre', 'clubes.imagen', DB::raw('CONCAT(instructores.nombre, "  ", apellido_paterno, "  ", apellido_materno) as instructor'))
+        ->get();
+        if($result)
+            return $result;
+        else
+         return response()->json(['status'=>'failed'], 404);
      }
  
      public function get(Request $req, $id){
