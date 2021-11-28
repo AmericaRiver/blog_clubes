@@ -22,7 +22,7 @@ class CreateInstructoresTable extends Migration
             $table->integer('edad');
             $table->string('telefono', 10);
             $table->string('correo', 60);
-            $table->char('usuario', 5);
+            $table->char('usuario', 5)->unique();
             $table->string('password');
             $table->string('video', 2500);
             //$table->timestamps();

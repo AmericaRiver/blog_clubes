@@ -17,6 +17,8 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
+$router->get('/join', 'ClubController@union');
+
 $router->group(['middleware'=>['cors']], function() use($router){
         $router->get('/login/{id}/{password}', 'AuthController@login');
         

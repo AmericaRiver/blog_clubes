@@ -69,7 +69,7 @@ class InstructorController extends Controller{
          }
  
      public function update(Request $req, $id){
-         //if($req->user()->rol != 'A') return response()->json(['status'=>'failed'], 401);
+         if($req->user()->rol != 'A') return response()->json(['status'=>'failed'], 401);
         /* $this->validate($req, [
              'rol'=>'filled', 
              'nombre'=>'filled',
@@ -139,7 +139,7 @@ class InstructorController extends Controller{
      }
  
      public function destroy(Request $req, $id){
-        // if($req->user()->rol != 'A') return response()->json(['status'=>'failed'], 401);
+         if($req->user()->rol != 'A') return response()->json(['status'=>'failed'], 401);
          $datos = Instructor::find($id);
          if(!$datos) return response()->json(['status'=>'failed'], 404);
          $result = $datos->delete();

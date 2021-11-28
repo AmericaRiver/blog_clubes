@@ -10,11 +10,11 @@ class AuthController extends Controller
 {
     public function login($id,$password){
         // $this->validate($req, [
-        //     'user'=>'required', 
+        //     'id'=>'required', 
         //     'pass'=>'required']);
 
         $result = Instructor::find($id);
-
+        //return response()->json(['status'=>$result], 404);
         if($result){
             if (Hash::check($password, $result->password)){
                 return response()->json([
