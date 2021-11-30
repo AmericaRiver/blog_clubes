@@ -19,6 +19,7 @@ class Clubes extends Migration
             $table->string('tipo', 11);
             $table->foreignId('id_instructor')->constrained('instructores');
             $table->string('imagen', 2500);
+            $table->string('video', 2500);
             //$table->timestamps();
         });
     }

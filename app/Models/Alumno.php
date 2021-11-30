@@ -8,7 +8,7 @@ class Alumno extends Model{
 
     
     protected $fillable = [
-        'id','folio', 'nombre', 'apellido_paterno','apellido_materno',
+        'id','folio', 'nombre', 'apellidos',
         'carrera',
         'sexo',
         'edad',

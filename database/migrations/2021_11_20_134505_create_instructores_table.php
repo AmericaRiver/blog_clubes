@@ -17,14 +17,12 @@ class CreateInstructoresTable extends Migration
             $table->id();
             $table->char('rol',1);
             $table->string('nombre', 45);
-            $table->string('apellido_paterno', 45);
-            $table->string('apellido_materno', 45);
+            $table->string('apellidos', 100);
             $table->integer('edad');
             $table->string('telefono', 10);
             $table->string('correo', 60);
             $table->char('usuario', 5)->unique();
             $table->string('password');
-            $table->string('video', 2500);
             //$table->timestamps();
         });
     }

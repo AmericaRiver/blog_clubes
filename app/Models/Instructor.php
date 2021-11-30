@@ -14,9 +14,8 @@ class Instructor extends Model implements AuthenticatableContract, AuthorizableC
     use Authenticatable, Authorizable, HasFactory;
     protected $table = "instructores";
     protected $fillable = [
-       'id', 'rol', 'nombre', 'apellido_paterno',
-        'apellido_materno', 'edad',
-        'telefono', 'correo', 'usuario', 'video'
+       'id', 'rol', 'nombre', 'apellidos', 'edad',
+        'telefono', 'correo', 'usuario'
     ];
 
     /**

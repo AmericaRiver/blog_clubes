@@ -45,7 +45,6 @@ class ClubalumnoController extends Controller{
     }
 
     public function destroy($id){
-        
         $datos = Clubalumno::find($id);
         if(!$datos) return response()->json(['status'=>'failed'], 404);
         $result = $datos->delete();

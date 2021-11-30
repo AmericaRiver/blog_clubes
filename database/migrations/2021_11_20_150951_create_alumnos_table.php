@@ -17,8 +17,7 @@ class CreateAlumnosTable extends Migration
             $table->id();
             $table->integer('folio')->unique();
             $table->string('nombre', 45);
-            $table->string('apellido_paterno', 45);
-            $table->string('apellido_materno', 45);
+            $table->string('apellidos', 100);
             $table->string('carrera', 40);
             $table->char('sexo',1);
             $table->integer('edad');
