@@ -7,10 +7,33 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class ClubController extends Controller{
-    public function index(){
+   /* public function index(){
         return Club::all();
-    }
+    }*/
 
+    public function index(){
+        $result=DB::table('instructores')
+        ->join('clubes', 'instructores.id', '=', 'clubes.id_instructor')
+        ->select('clubes.*', DB::raw('CONCAT(instructores.nombre, "  ", apellidos) as instructor'))
+        ->get();
+        if($result)
+            return $result;
+        else
+         return response()->json(['status'=>'failed'], 404);
+     }
+
+     public function get($id){
+        $result=DB::table('clubes')
+        ->join('instructores', 'clubes.id_instructor', '=', 'instructores.id')
+        ->select('clubes.*', DB::raw('CONCAT(instructores.nombre, " ", apellidos) as instructor'))
+        ->where("clubes.id", "=", $id)
+        ->get();
+        if($result)
+            return $result;
+        else
+         return response()->json(['status'=>'failed'], 404);
+    }
+    
     public function nombreClub(){
         $result = DB::select('SELECT nombre FROM clubes');
         if($result)
@@ -47,14 +70,6 @@ class ClubController extends Controller{
             return $result;
         else
          return response()->json(['status'=>'failed'], 404);
-    }
-
-    public function get($id){
-        $result = Club::find($id);
-        if($result)
-            return $result;
-        else
-            return response()->json(['status'=>'failed'], 404);
     }
 
     public function create(Request $req){

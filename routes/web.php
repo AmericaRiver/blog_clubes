@@ -17,7 +17,7 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 //Muestra id, nombre, imagen, video del club y nombre completo del instructor
-$router->get('/join', 'InstructorController@union');
+//$router->get('/join', 'InstructorController@union');
 //Muestra la información solo de los clubes deportivos
 $router->get('/deportivo', 'ClubController@deportivo');
 //Muestra la información solo de los clubes academicos

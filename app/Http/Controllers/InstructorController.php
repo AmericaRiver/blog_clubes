@@ -14,16 +14,16 @@ class InstructorController extends Controller{
          return Instructor::all();
      }
 
-     public function union(){
-        $result=DB::table('instructores')
-        ->join('clubes', 'instructores.id', '=', 'clubes.id_instructor')
-        ->select('clubes.id', 'clubes.nombre', 'clubes.imagen', 'clubes.video', DB::raw('CONCAT(instructores.nombre, "  ", apellidos) as instructor'))
-        ->get();
-        if($result)
-            return $result;
-        else
-         return response()->json(['status'=>'failed'], 404);
-     }
+    //  public function union(){
+    //     $result=DB::table('instructores')
+    //     ->join('clubes', 'instructores.id', '=', 'clubes.id_instructor')
+    //     ->select('clubes.id', 'clubes.nombre', 'clubes.imagen', 'clubes.video', DB::raw('CONCAT(instructores.nombre, "  ", apellidos) as instructor'))
+    //     ->get();
+    //     if($result)
+    //         return $result;
+    //     else
+    //      return response()->json(['status'=>'failed'], 404);
+    //  }
  
      public function get(Request $req, $id){
          if($req->user()->rol != 'A') return response()->json(['status'=>'failed no eres administrador'], 401);
