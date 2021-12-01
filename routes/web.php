@@ -27,7 +27,6 @@ $router->get('/cultural', 'ClubController@cultural');
 //Muestra solo el nombre del club
 $router->get('/nombreClub', 'ClubController@nombreClub');
 
-$router->get('/alu/{id}', 'AlumnoController@alumnos');
 $router->get('/clubIns/{id}', 'InstructorController@club');
 $router->get('/alumnosClub/{id}', 'AlumnoController@alumnosClub');
 

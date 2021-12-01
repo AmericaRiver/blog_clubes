@@ -9,16 +9,6 @@ class AlumnoController extends Controller{
         return Alumno::all();
     }
 
-    public function alumnos($id){
-        $result = DB::table('alumnos')
-        ->where('clave_club', $id)
-        ->get();
-        if($result)
-            return $result;
-        else
-         return response()->json(['status'=>'failed'], 404);
-    }
-
     public function alumnosClub($id){
         $result=DB::table('alumnos')
         ->join('clubes', 'clubes.id', '=', 'alumnos.clave_club')
