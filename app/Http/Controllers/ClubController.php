@@ -44,6 +44,8 @@ class ClubController extends Controller{
 
     public function deportivo(){
         $result = DB::table('clubes')
+        ->join('instructores', 'clubes.id_instructor', '=', 'instructores.id')
+        ->select('clubes.*', DB::raw('CONCAT(instructores.nombre, " ", apellidos) as instructor'))
         ->where('tipo', 'deportivo')
         ->get();
         if($result)
@@ -54,6 +56,8 @@ class ClubController extends Controller{
 
     public function academico(){
         $result = DB::table('clubes')
+        ->join('instructores', 'clubes.id_instructor', '=', 'instructores.id')
+        ->select('clubes.*', DB::raw('CONCAT(instructores.nombre, " ", apellidos) as instructor'))
         ->where('tipo', 'academico')
         ->get();
         if($result)
@@ -64,6 +68,8 @@ class ClubController extends Controller{
 
     public function cultural(){
         $result = DB::table('clubes')
+        ->join('instructores', 'clubes.id_instructor', '=', 'instructores.id')
+        ->select('clubes.*', DB::raw('CONCAT(instructores.nombre, " ", apellidos) as instructor'))
         ->where('tipo', 'CULTURAL')
         ->get();
         if($result)

@@ -2,10 +2,21 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Alumno;
+use Illuminate\Support\Facades\DB;
 
 class AlumnoController extends Controller{
     public function index(Request $req){
         return Alumno::all();
+    }
+
+     public function alumnos($id){
+        $result = DB::table('alumnos')
+        ->where('clave_club', $id)
+        ->get();
+        if($result)
+            return $result;
+        else
+         return response()->json(['status'=>'failed'], 404);
     }
 
     public function get($id){
@@ -25,7 +36,8 @@ class AlumnoController extends Controller{
             'edad'=>'required',
             'telefono'=>'required',
             'correo'=>'required',
-            'club_alternativo'=>'required']);
+            'club_alternativo'=>'required',
+            'clave_club'=>'required']);
         $datos = new Alumno;
         $result = $datos->fill($req->all())->save();
         if($result)
@@ -35,7 +47,6 @@ class AlumnoController extends Controller{
     }
 
     public function update (Request $req, $id){
-        
         $this->validate($req, [ 
             'nombre'=>'filled',
             'apellidos'=>'filled',
@@ -44,7 +55,8 @@ class AlumnoController extends Controller{
             'edad'=>'filled',
             'telefono'=>'filled',
             'correo'=>'filled',
-            'club_alternativo'=>'filled']);
+            'club_alternativo'=>'filled',
+            'clave_club'=>'filled']);
 
             $datos = Alumno::find($id);
             if(!$datos) return response()->json(['status'=>'failed'], 404);
@@ -53,7 +65,6 @@ class AlumnoController extends Controller{
                 return response()->json(['status'=>'success'], 200);
             else
                 return response()->json(['status'=>'failed'], 404);
-
     }
 
     public function destroy ($id){

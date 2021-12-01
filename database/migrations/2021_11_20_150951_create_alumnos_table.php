@@ -26,6 +26,8 @@ class CreateAlumnosTable extends Migration
             $table->string('club_alternativo', 40);
             $table->string('alergias', 100);
             $table->string('situacion_medica', 100);
+            $table->foreignId('clave_club')->constrained('clubes');
+            $table->timestamps();
         });
     }
 

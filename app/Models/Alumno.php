@@ -16,7 +16,11 @@ class Alumno extends Model{
         'correo',
         'club_alternativo',
         'alergias',
-        'situacion_medica'
+        'situacion_medica',
+        'clave_club'
     ];
-    public $timestamps = false;
+  
+    protected $hidden = [
+        'created_at', 'updated_at'
+    ];
 }

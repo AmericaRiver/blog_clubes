@@ -27,6 +27,8 @@ $router->get('/cultural', 'ClubController@cultural');
 //Muestra solo el nombre del club
 $router->get('/nombreClub', 'ClubController@nombreClub');
 
+$router->get('/alu/{id}', 'AlumnoController@alumnos');
+
 $router->group(['middleware'=>['cors']], function() use($router){
         $router->get('/login/{id}/{password}', 'AuthController@login');
         
@@ -50,12 +52,6 @@ $router->group(['middleware'=>['cors']], function() use($router){
         $router->post('/clubes', 'ClubController@create');
         $router->post('/clubes/{id}', 'ClubController@update');
         $router->delete('/clubes/{id}', 'ClubController@destroy');
-
-        $router->get('/clubes-alumnos', 'ClubalumnoController@index');
-        $router->get('/clubes-alumnos/{id}', 'ClubalumnoController@get');
-        $router->post('/clubes-alumnos', 'ClubalumnoController@create');
-        $router->put('/clubes-alumnos/{id}', 'ClubalumnoController@update');
-        $router->delete('/clubes-alumnos/{id}', 'ClubalumnoController@destroy');
 
 }
 );
