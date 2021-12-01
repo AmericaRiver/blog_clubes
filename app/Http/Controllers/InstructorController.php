@@ -14,6 +14,18 @@ class InstructorController extends Controller{
          return Instructor::all();
      }
 
+     public function club($id){
+        $result=DB::table('instructores')
+        ->join('clubes', 'instructores.id', '=', 'clubes.id_instructor')
+        ->select('clubes.*', DB::raw('CONCAT(instructores.nombre, " ", apellidos) as instructor'))
+        ->where("clubes.id_instructor", "=", $id)
+        ->get();
+        if($result)
+            return $result;
+        else
+         return response()->json(['status'=>'failed'], 404);
+    }
+
     //  public function union(){
     //     $result=DB::table('instructores')
     //     ->join('clubes', 'instructores.id', '=', 'clubes.id_instructor')

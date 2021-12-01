@@ -28,6 +28,7 @@ $router->get('/cultural', 'ClubController@cultural');
 $router->get('/nombreClub', 'ClubController@nombreClub');
 
 $router->get('/alu/{id}', 'AlumnoController@alumnos');
+$router->get('/clubIns/{id}', 'InstructorController@club');
 
 $router->group(['middleware'=>['cors']], function() use($router){
         $router->get('/login/{id}/{password}', 'AuthController@login');
