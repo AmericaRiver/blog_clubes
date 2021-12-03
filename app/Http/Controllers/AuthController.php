@@ -13,7 +13,8 @@ class AuthController extends Controller
         //     'id'=>'required', 
         //     'pass'=>'required']);
 
-        $result = Instructor::find($id);
+        //$result = Instructor::find($id);
+        $result = Instructor::where('usuario', $id)->first();
         //return response()->json(['status'=>$result], 404);
         if($result){
             if (Hash::check($password, $result->password)){
